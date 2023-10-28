@@ -36,6 +36,8 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-d> <C-d> zz
 nnoremap <C-u> <C-u> zz
 nmap <F8> :TagbarToggle<CR>
+nnoremap <C-Down> :tabprevious<CR>
+nnoremap <C-Up> :tabnext<CR>
 
 :set completeopt-=preview " For No Previews
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
