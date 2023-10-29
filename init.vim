@@ -23,6 +23,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple c
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/scrooloose/syntastic'
 set encoding=UTF-8
 
 call plug#end()
