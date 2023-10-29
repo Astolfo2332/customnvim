@@ -23,7 +23,6 @@ Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple c
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/jiangmiao/auto-pairs'
-Plug 'https://github.com/scrooloose/syntastic'
 set encoding=UTF-8
 
 call plug#end()
@@ -67,6 +66,7 @@ let g:NERDTreeDirArrowCollapsible="~"
 " :CocInstall coc-html
 " :CocInstall coc-tsserver
 " :CocInstall coc-vetur
+" :CocInstall coc.clang for c
 "airline
 " air-line
 let g:airline_powerline_fonts = 1
