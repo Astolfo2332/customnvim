@@ -9,7 +9,6 @@
 :set softtabstop=4
 :set mouse=a
 call plug#begin()
-
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
@@ -24,12 +23,11 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 set encoding=UTF-8
-
 call plug#end()
 let g:dracula_colorterm=0
 :colorscheme dracula
 "Maps
-let mapleader = ","
+let mapleader="\<Space>"
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -54,11 +52,14 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>0 <Plug>AirlineSelectTab0
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
+nnoremap <leader>p "+p  
+nnoremap <leader>y "+y 
+nnoremap <leader>P "+P  
+nnoremap <leader>Y "+Y 
 :set completeopt-=preview " For No Previews
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
-
 " --- Just Some Notes ---
 " :PlugClean :PlugInstall :UpdateRemotePlugins
 "
@@ -67,9 +68,8 @@ let g:NERDTreeDirArrowCollapsible="~"
 " :CocInstall coc-tsserver
 " :CocInstall coc-vetur
 " :CocInstall coc.clang for c
-"airline
+" Recordar descargar las nerdfonts desde: https://github.com/ryanoasis/nerd-fonts/releases
 " air-line
-let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
