@@ -53,10 +53,10 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>0 <Plug>AirlineSelectTab0
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
-nnoremap <leader>p "+p  
-nnoremap <leader>y "+y 
-nnoremap <leader>P "+P  
-nnoremap <leader>Y "+Y 
+nnoremap <silent> <leader>p "+p  
+nnoremap <silent> <leader>y "+y 
+nnoremap <silent> <leader>P "+P  
+nnoremap <silent> <leader>Y "+Y 
 :set completeopt-=preview " For No Previews
 let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 let g:NERDTreeDirArrowExpandable="+"
