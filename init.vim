@@ -31,8 +31,10 @@ set encoding=UTF-8
 call plug#end()
 let g:dracula_colorterm=0
 :colorscheme dracula
-set shell=pwsh.exe
+"set shell=pwsh.exe
 "Maps
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
 let mapleader="\<Space>"
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -169,6 +171,6 @@ require('nvim-treesitter.configs').setup {
 require("nvim-treesitter.install").compilers={"zig"}
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("x", "dp", [["_dP]])
+vim.keymap.set("x", "<silent><leader>d", [["_dP]])
 EOF
 " :colorscheme catppuccin
