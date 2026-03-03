@@ -24,13 +24,13 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'luochen1990/rainbow'
-" Plug 'Mofiqul/dracula.nvim',{ 'as': 'dracula' }
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'nvim-treesitter/nvim-treesitter'
-set encoding=UTF-8
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
+
+
+set encoding=UTF-8
 let g:dracula_colorterm=0
-:colorscheme dracula
+colorscheme dracula
 "set shell=pwsh.exe
 "Maps
 nnoremap <Space> <Nop>
@@ -45,6 +45,10 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-d> <C-d> zz
 nnoremap <C-u> <C-u> zz
 tnoremap <C-n> <C-\><C-n>
+
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
 nmap <F8> :TagbarToggle<CR>
 nnoremap <C-Down> :bprevious<CR>
 nnoremap <C-Up> :bnext<CR>
@@ -111,50 +115,20 @@ let g:airline_theme="kolor"
 let g:rainbow_active = 1
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=700})
+augroup END
+
 lua << EOF
-require("catppuccin").setup({
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-    transparent_background = true, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = false, -- Force no underline
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    integrations = {
-        nvimtree = true,
-        aerial=true,
-        coc_nvim=true
-    }
-})
 
 require('nvim-treesitter.configs').setup {
+
+    require("nvim-treesitter.install").compilers = { "zig" }
+    require("nvim-treesitter.install").prefer_git = true
+
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query","python","vue","javascript","json","html","css","typescript","scss","pug","matlab" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query","python","vue","javascript","json","html","css","typescript","scss","pug","matlab"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -168,9 +142,10 @@ require('nvim-treesitter.configs').setup {
     enable = true,
    },
 }
-require("nvim-treesitter.install").compilers={"zig"}
+
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("x", "<silent><leader>d", [["_dP]])
 EOF
-" :colorscheme catppuccin
+
